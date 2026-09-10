@@ -1,6 +1,6 @@
 # GAMAC
 
-A PX4 + ROS2 + Gz harmonic + RViz2 simulation pipeline: a drone with a dual camera setup (front and down) + lidar (to be used in future) combo autonomously detects the field boundary, calculates the centroid, and then after that goes up to the centroid to hover over it.
+A PX4 + ROS2 + Gz harmonic + RViz2 simulation pipeline: a drone with a dual camera setup (front and down) + lidar (to be used in future) combo autonomously detects the field boundary, calculates the centroid, and then after that goes up to the centroid to hover over it from distance of 30m
 
 ## Stack
 - Ubuntu 24.04, ROS 2 Jazzy, Gazebo Harmonic, PX4 v1.18.0-beta1
