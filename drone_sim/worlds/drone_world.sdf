@@ -1,0 +1,730 @@
+<?xml version="1.0" ?>
+<sdf version="1.9">
+  <world name="drone_world">
+    <physics type="ode">
+      <max_step_size>0.004</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+      <real_time_update_rate>250</real_time_update_rate>
+    </physics>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type="adiabatic"/>
+    <scene>
+      <grid>false</grid>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>true</shadows>
+    </scene>
+
+    <!-- Base ground plane: physics/collision only, tiles sit visually on top -->
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="tile_0">
+      <static>true</static>
+      <pose>-3.75 -3.75 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.55 0.2 1</ambient>
+            <diffuse>0.2 0.55 0.2 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_1">
+      <static>true</static>
+      <pose>-3.75 -2.25 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.35 0.65 0.15 1</ambient>
+            <diffuse>0.35 0.65 0.15 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_2">
+      <static>true</static>
+      <pose>-3.75 -0.75 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.1 0.35 0.1 1</ambient>
+            <diffuse>0.1 0.35 0.1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_3">
+      <static>true</static>
+      <pose>-3.75 0.75 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.55 0.7 0.3 1</ambient>
+            <diffuse>0.55 0.7 0.3 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_4">
+      <static>true</static>
+      <pose>-3.75 2.25 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.55 0.2 1</ambient>
+            <diffuse>0.2 0.55 0.2 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_5">
+      <static>true</static>
+      <pose>-3.75 3.75 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.35 0.65 0.15 1</ambient>
+            <diffuse>0.35 0.65 0.15 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_6">
+      <static>true</static>
+      <pose>-2.25 -3.75 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.35 0.65 0.15 1</ambient>
+            <diffuse>0.35 0.65 0.15 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_7">
+      <static>true</static>
+      <pose>-2.25 -2.25 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.1 0.35 0.1 1</ambient>
+            <diffuse>0.1 0.35 0.1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_8">
+      <static>true</static>
+      <pose>-2.25 -0.75 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.55 0.7 0.3 1</ambient>
+            <diffuse>0.55 0.7 0.3 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_9">
+      <static>true</static>
+      <pose>-2.25 0.75 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.55 0.2 1</ambient>
+            <diffuse>0.2 0.55 0.2 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_10">
+      <static>true</static>
+      <pose>-2.25 2.25 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.35 0.65 0.15 1</ambient>
+            <diffuse>0.35 0.65 0.15 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_11">
+      <static>true</static>
+      <pose>-2.25 3.75 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.1 0.35 0.1 1</ambient>
+            <diffuse>0.1 0.35 0.1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_12">
+      <static>true</static>
+      <pose>-0.75 -3.75 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.1 0.35 0.1 1</ambient>
+            <diffuse>0.1 0.35 0.1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_13">
+      <static>true</static>
+      <pose>-0.75 -2.25 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.55 0.7 0.3 1</ambient>
+            <diffuse>0.55 0.7 0.3 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_14">
+      <static>true</static>
+      <pose>-0.75 -0.75 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.55 0.2 1</ambient>
+            <diffuse>0.2 0.55 0.2 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_15">
+      <static>true</static>
+      <pose>-0.75 0.75 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.35 0.65 0.15 1</ambient>
+            <diffuse>0.35 0.65 0.15 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_16">
+      <static>true</static>
+      <pose>-0.75 2.25 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.1 0.35 0.1 1</ambient>
+            <diffuse>0.1 0.35 0.1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_17">
+      <static>true</static>
+      <pose>-0.75 3.75 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.55 0.7 0.3 1</ambient>
+            <diffuse>0.55 0.7 0.3 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_18">
+      <static>true</static>
+      <pose>0.75 -3.75 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.55 0.7 0.3 1</ambient>
+            <diffuse>0.55 0.7 0.3 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_19">
+      <static>true</static>
+      <pose>0.75 -2.25 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.55 0.2 1</ambient>
+            <diffuse>0.2 0.55 0.2 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_20">
+      <static>true</static>
+      <pose>0.75 -0.75 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.35 0.65 0.15 1</ambient>
+            <diffuse>0.35 0.65 0.15 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_21">
+      <static>true</static>
+      <pose>0.75 0.75 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.1 0.35 0.1 1</ambient>
+            <diffuse>0.1 0.35 0.1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_22">
+      <static>true</static>
+      <pose>0.75 2.25 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.55 0.7 0.3 1</ambient>
+            <diffuse>0.55 0.7 0.3 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_23">
+      <static>true</static>
+      <pose>0.75 3.75 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.55 0.2 1</ambient>
+            <diffuse>0.2 0.55 0.2 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_24">
+      <static>true</static>
+      <pose>2.25 -3.75 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.55 0.2 1</ambient>
+            <diffuse>0.2 0.55 0.2 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_25">
+      <static>true</static>
+      <pose>2.25 -2.25 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.35 0.65 0.15 1</ambient>
+            <diffuse>0.35 0.65 0.15 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_26">
+      <static>true</static>
+      <pose>2.25 -0.75 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.1 0.35 0.1 1</ambient>
+            <diffuse>0.1 0.35 0.1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_27">
+      <static>true</static>
+      <pose>2.25 0.75 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.55 0.7 0.3 1</ambient>
+            <diffuse>0.55 0.7 0.3 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_28">
+      <static>true</static>
+      <pose>2.25 2.25 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.55 0.2 1</ambient>
+            <diffuse>0.2 0.55 0.2 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_29">
+      <static>true</static>
+      <pose>2.25 3.75 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.35 0.65 0.15 1</ambient>
+            <diffuse>0.35 0.65 0.15 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_30">
+      <static>true</static>
+      <pose>3.75 -3.75 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.35 0.65 0.15 1</ambient>
+            <diffuse>0.35 0.65 0.15 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_31">
+      <static>true</static>
+      <pose>3.75 -2.25 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.1 0.35 0.1 1</ambient>
+            <diffuse>0.1 0.35 0.1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_32">
+      <static>true</static>
+      <pose>3.75 -0.75 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.55 0.7 0.3 1</ambient>
+            <diffuse>0.55 0.7 0.3 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_33">
+      <static>true</static>
+      <pose>3.75 0.75 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.55 0.2 1</ambient>
+            <diffuse>0.2 0.55 0.2 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_34">
+      <static>true</static>
+      <pose>3.75 2.25 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.35 0.65 0.15 1</ambient>
+            <diffuse>0.35 0.65 0.15 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tile_35">
+      <static>true</static>
+      <pose>3.75 3.75 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.5 1.5 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.1 0.35 0.1 1</ambient>
+            <diffuse>0.1 0.35 0.1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <light name="sunUTC" type="directional">
+      <pose>0 0 500 0 -0 0</pose>
+      <cast_shadows>true</cast_shadows>
+      <intensity>1</intensity>
+      <direction>0.001 0.625 -0.78</direction>
+      <diffuse>0.904 0.904 0.904 1</diffuse>
+      <specular>0.271 0.271 0.271 1</specular>
+      <attenuation>
+        <range>2000</range>
+        <linear>0</linear>
+        <constant>1</constant>
+        <quadratic>0</quadratic>
+      </attenuation>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <world_frame_orientation>ENU</world_frame_orientation>
+      <latitude_deg>47.397971057728974</latitude_deg>
+      <longitude_deg>8.546163739800146</longitude_deg>
+      <elevation>0</elevation>
+    </spherical_coordinates>
+  </world>
+</sdf>

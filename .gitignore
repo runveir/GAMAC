@@ -1,0 +1,14 @@
+# Build artifacts
+build/
+install/
+log/
+
+# Python
+__pycache__/
+*.pyc
+
+# Logs / generated output
+*.ulg
+
+# Editor
+.vscode/

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdf version='1.9'>
+  <model name='x500_dual_cam_lidar'>
+    <include merge='true'>
+      <uri>model://x500</uri>
+    </include>
+
+    <!-- Forward-facing camera -->
+    <link name="camera_front_link">
+      <pose relative_to="base_link">.12 .03 .242 0 0 0</pose>
+      <inertial>
+        <pose>0.03 0.03 0.03 0 0 0</pose>
+        <mass>0.050</mass>
+        <inertia>
+          <ixx>0.00004</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00004</iyy>
+          <iyz>0</iyz>
+          <izz>0.00004</izz>
+        </inertia>
+      </inertial>
+      <visual name="camera_front/visual/housing">
+        <geometry>
+          <box>
+            <size>0.02 0.04 0.04</size>
+          </box>
+        </geometry>
+      </visual>
+      <visual name="camera_front/visual/lens">
+        <pose>0.015 0 0 0 1.5707 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.008</radius>
+            <length>0.01</length>
+          </cylinder>
+        </geometry>
+      </visual>
+      <sensor name="camera_front" type="camera">
+        <gz_frame_id>camera_front_link</gz_frame_id>
+        <pose>0 0 0 0 0 0</pose>
+        <camera>
+          <horizontal_fov>1.74</horizontal_fov>
+          <image>
+            <width>1280</width>
+            <height>960</height>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>3000</far>
+          </clip>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>30</update_rate>
+        <visualize>true</visualize>
+      </sensor>
+      <gravity>true</gravity>
+      <velocity_decay />
+    </link>
+    <joint name="CameraFrontJoint" type="fixed">
+      <parent>base_link</parent>
+      <child>camera_front_link</child>
+    </joint>
+
+    <!-- Downward-facing camera -->
+    <link name="camera_down_link">
+      <pose relative_to="base_link">0 0 -0.06 0 1.5707 0</pose>
+      <inertial>
+        <pose>0.03 0.03 0.03 0 0 0</pose>
+        <mass>0.050</mass>
+        <inertia>
+          <ixx>0.00004</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00004</iyy>
+          <iyz>0</iyz>
+          <izz>0.00004</izz>
+        </inertia>
+      </inertial>
+      <visual name="camera_down/visual/housing">
+        <geometry>
+          <box>
+            <size>0.02 0.04 0.04</size>
+          </box>
+        </geometry>
+      </visual>
+      <visual name="camera_down/visual/lens">
+        <pose>0.015 0 0 0 1.5707 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.008</radius>
+            <length>0.01</length>
+          </cylinder>
+        </geometry>
+      </visual>
+      <sensor name="camera_down" type="camera">
+        <gz_frame_id>camera_down_link</gz_frame_id>
+        <pose>0 0 0 0 0 0</pose>
+        <camera>
+          <horizontal_fov>1.74</horizontal_fov>
+          <image>
+            <width>1280</width>
+            <height>960</height>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>3000</far>
+          </clip>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>30</update_rate>
+        <visualize>true</visualize>
+      </sensor>
+      <gravity>true</gravity>
+      <velocity_decay />
+    </link>
+        <joint name="CameraDownJoint" type="fixed">
+      <parent>base_link</parent>
+      <child>camera_down_link</child>
+    </joint>
+
+    <!-- Downward scanning lidar (real point-cloud for mapping) -->
+    <link name="lidar_down_link">
+      <pose relative_to="base_link">0 0 -0.05 0 1.5707 0</pose>
+      <inertial>
+        <mass>0.05</mass>
+        <inertia>
+          <ixx>0.00001</ixx>
+          <iyy>0.00001</iyy>
+          <izz>0.00001</izz>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyz>0.0</iyz>
+        </inertia>
+      </inertial>
+      <sensor name="lidar_down" type="gpu_lidar">
+        <gz_frame_id>lidar_down_link</gz_frame_id>
+        <pose>0 0 0 0 0 0</pose>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>64</samples>
+              <resolution>1</resolution>
+              <min_angle>-0.7854</min_angle>
+              <max_angle>0.7854</max_angle>
+            </horizontal>
+            <vertical>
+              <samples>48</samples>
+              <resolution>1</resolution>
+              <min_angle>-0.5236</min_angle>
+              <max_angle>0.5236</max_angle>
+            </vertical>
+          </scan>
+          <range>
+            <min>0.1</min>
+            <max>30.0</max>
+            <resolution>0.01</resolution>
+          </range>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.01</stddev>
+          </noise>
+        </ray>
+        <always_on>1</always_on>
+        <update_rate>10</update_rate>
+        <visualize>true</visualize>
+      </sensor>
+    </link>
+    <joint name="LidarDownJoint" type="fixed">
+      <parent>base_link</parent>
+      <child>lidar_down_link</child>
+    </joint>
+  </model>
+</sdf>
