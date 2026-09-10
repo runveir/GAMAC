@@ -14,24 +14,24 @@ A PX4 + ROS2 + Gz harmonic + RViz2 simulation pipeline: a drone with a dual came
 
 
 ## Pipeline nodes (drone_sim/scripts/)
-- **generate_world.py** — generates the Gazebo world file
+- **generate_world.py** - generates the Gazebo world file
   (a colored checkerboard field on a plain ground plane). Grid size,
   tile size, and color palette are parameters at the top of the file.
-- **teleop_offboard.py** — keyboard-controlled manual flight
+- **teleop_offboard.py** - keyboard-controlled manual flight
   (WASD move, I/K up/down, J/L yaw, Q quit). Includes an automatic
   ~3s climb after arming so PX4 registers takeoff before handing
   control to the keyboard. Press **C** to switch from manual flight
   into autonomous position-hold over the computed field centroid.
-- **offboard_control.py** — simple fixed-position offboard hold, used
+- **offboard_control.py** - simple fixed-position offboard hold, used
   for early pipeline testing.
-- **boundary_detector.py** — subscribes to the downward camera feed,
+- **boundary_detector.py** - subscribes to the downward camera feed,
   uses OpenCV HSV saturation thresholding to separate the colored
   field tiles from the plain floor, and publishes detected boundary
   points.
-- **coord_transformer.py** — subscribes to PX4 odometry
+- **coord_transformer.py** - subscribes to PX4 odometry
   (`/fmu/out/vehicle_odometry`, BEST_EFFORT QoS) and projects the
   detected 2D pixel boundary points into 3D world coordinates.
-- **field_map_builder.py** — accumulates the 3D boundary points over
+- **field_map_builder.py** - accumulates the 3D boundary points over
   a flight, streams live RViz markers, and on shutdown (Ctrl+C)
   computes the field centroid and saves the full map to
   `field_map.json`.
